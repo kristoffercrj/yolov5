@@ -1,0 +1,5 @@
+train: datasets/fish-dataset/train/images
+val: datasets/fish-dataset/validation/images
+
+nc: 1
+names: ['fish']

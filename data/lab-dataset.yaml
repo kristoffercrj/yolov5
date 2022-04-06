@@ -1,0 +1,5 @@
+train: datasets/Lab-dataset/train/images
+val: datasets/Lab-dataset/validation/images
+
+nc: 1
+names: ['fish-object']
