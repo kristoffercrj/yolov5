@@ -41,11 +41,11 @@ img_r175 = cv.imread('../../lab-dataset/test-imgs/right-175cm.jpg')
 imgs = [img_l25, img_r25, img_l50, img_r50, img_l75, img_r75, img_l100, img_r100, img_l125, img_r125, img_l150, img_r150, img_l175, img_r175]
 
 results = model(imgs)
+# results.save()
 res = results.pandas()
-# print(res.xyxy[0].iloc[0]['xmin'])
-
-# # print(res.xyxy[1].iloc[1])
 length = 25
+
+
 
 for img_nr in range(0, 14, 2):
     # Round the values to nearest integer because OpenCV is scared of float values
@@ -71,12 +71,12 @@ for img_nr in range(0, 14, 2):
     distance = np.sqrt(X**2 + Y**2 + Z**2)
     print(distance)
 
-    # # Creates a bounding box with information generated from Yolov5 bounding boxes
-    # imgs[img_nr] = cv.rectangle(imgs[img_nr], (xmin, ymax), (xmax, ymin), (0, 0, 255), 2)
-    # font = cv.FONT_HERSHEY_SIMPLEX
-    # imgs[img_nr] = cv.putText(imgs[img_nr], f'{round(distance, 3)} m', (xmin, ymin - 5), font, 0.8, (0, 0, 255), 2)
-    # cv.imwrite(f'../../result_images/estimated_{str(length)}cm.png', imgs[img_nr])
-    # length = length + 25
+    # Creates a bounding box with information generated from Yolov5 bounding boxes
+    imgs[img_nr] = cv.rectangle(imgs[img_nr], (xmin, ymax), (xmax, ymin), (0, 0, 255), 2)
+    font = cv.FONT_HERSHEY_SIMPLEX
+    imgs[img_nr] = cv.putText(imgs[img_nr], f'{round(distance, 3)} m', (xmin, ymin - 5), font, 0.8, (0, 0, 255), 2)
+    cv.imwrite(f'../../result_images/estimated_{str(length)}cm.png', imgs[img_nr])
+    length = length + 25
 
 # for img_nr in range(0, 14, 2):
 #     # Round the values to nearest integer because OpenCV is scared of float values

@@ -1,296 +1,388 @@
-<div align="center">
-<p>
-   <a align="left" href="https://ultralytics.com/yolov5" target="_blank">
-   <img width="850" src="https://github.com/ultralytics/yolov5/releases/download/v1.0/splash.jpg"></a>
-</p>
-<br>
-<div>
-   <a href="https://github.com/ultralytics/yolov5/actions"><img src="https://github.com/ultralytics/yolov5/workflows/CI%20CPU%20testing/badge.svg" alt="CI CPU testing"></a>
-   <a href="https://zenodo.org/badge/latestdoi/264818686"><img src="https://zenodo.org/badge/264818686.svg" alt="YOLOv5 Citation"></a>
-   <a href="https://hub.docker.com/r/ultralytics/yolov5"><img src="https://img.shields.io/docker/pulls/ultralytics/yolov5?logo=docker" alt="Docker Pulls"></a>
-   <br>
-   <a href="https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-   <a href="https://www.kaggle.com/ultralytics/yolov5"><img src="https://kaggle.com/static/images/open-in-kaggle.svg" alt="Open In Kaggle"></a>
-   <a href="https://join.slack.com/t/ultralytics/shared_invite/zt-w29ei8bp-jczz7QYUmDtgo6r6KcMIAg"><img src="https://img.shields.io/badge/Slack-Join_Forum-blue.svg?logo=slack" alt="Join Forum"></a>
-</div>
-<br>
-<div align="center">
-   <a href="https://github.com/ultralytics">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-github.png" width="2%"/>
-   </a>
-   <img width="2%" />
-   <a href="https://www.linkedin.com/company/ultralytics">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-linkedin.png" width="2%"/>
-   </a>
-   <img width="2%" />
-   <a href="https://twitter.com/ultralytics">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-twitter.png" width="2%"/>
-   </a>
-   <img width="2%" />
-   <a href="https://youtube.com/ultralytics">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-youtube.png" width="2%"/>
-   </a>
-   <img width="2%" />
-   <a href="https://www.facebook.com/ultralytics">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-facebook.png" width="2%"/>
-   </a>
-   <img width="2%" />
-   <a href="https://www.instagram.com/ultralytics/">
-   <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-instagram.png" width="2%"/>
-   </a>
-</div>
+<img src="assets/magicleap.png" width="240">
 
-<br>
-<p>
-YOLOv5 🚀 is a family of object detection architectures and models pretrained on the COCO dataset, and represents <a href="https://ultralytics.com">Ultralytics</a>
- open-source research into future vision AI methods, incorporating lessons learned and best practices evolved over thousands of hours of research and development.
-</p>
+### Research @ Magic Leap (CVPR 2020, Oral)
 
-<!--
-<a align="center" href="https://ultralytics.com/yolov5" target="_blank">
-<img width="800" src="https://github.com/ultralytics/yolov5/releases/download/v1.0/banner-api.png"></a>
--->
+# SuperGlue Inference and Evaluation Demo Script
 
-</div>
-
-## <div align="center">Documentation</div>
-
-See the [YOLOv5 Docs](https://docs.ultralytics.com) for full documentation on training, testing and deployment.
-
-## <div align="center">Quick Start Examples</div>
-
-<details open>
-<summary>Install</summary>
-
-Clone repo and install [requirements.txt](https://github.com/ultralytics/yolov5/blob/master/requirements.txt) in a
-[**Python>=3.6.0**](https://www.python.org/) environment, including
-[**PyTorch>=1.7**](https://pytorch.org/get-started/locally/).
-
-```bash
-git clone https://github.com/ultralytics/yolov5  # clone
-cd yolov5
-pip install -r requirements.txt  # install
-```
-
-</details>
-
-<details open>
-<summary>Inference</summary>
-
-Inference with YOLOv5 and [PyTorch Hub](https://github.com/ultralytics/yolov5/issues/36)
-. [Models](https://github.com/ultralytics/yolov5/tree/master/models) download automatically from the latest
-YOLOv5 [release](https://github.com/ultralytics/yolov5/releases).
-
-```python
-import torch
-
-# Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
-
-# Images
-img = 'https://ultralytics.com/images/zidane.jpg'  # or file, Path, PIL, OpenCV, numpy, list
-
-# Inference
-results = model(img)
-
-# Results
-results.print()  # or .show(), .save(), .crop(), .pandas(), etc.
-```
-
-</details>
-
-
-
-<details>
-<summary>Inference with detect.py</summary>
-
-`detect.py` runs inference on a variety of sources, downloading [models](https://github.com/ultralytics/yolov5/tree/master/models) automatically from
-the latest YOLOv5 [release](https://github.com/ultralytics/yolov5/releases) and saving results to `runs/detect`.
-
-```bash
-python detect.py --source 0  # webcam
-                          img.jpg  # image
-                          vid.mp4  # video
-                          path/  # directory
-                          path/*.jpg  # glob
-                          'https://youtu.be/Zgi9g1ksQHc'  # YouTube
-                          'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
-```
-
-</details>
-
-<details>
-<summary>Training</summary>
-
-The commands below reproduce YOLOv5 [COCO](https://github.com/ultralytics/yolov5/blob/master/data/scripts/get_coco.sh)
-results. [Models](https://github.com/ultralytics/yolov5/tree/master/models)
-and [datasets](https://github.com/ultralytics/yolov5/tree/master/data) download automatically from the latest
-YOLOv5 [release](https://github.com/ultralytics/yolov5/releases). Training times for YOLOv5n/s/m/l/x are
-1/2/4/6/8 days on a V100 GPU ([Multi-GPU](https://github.com/ultralytics/yolov5/issues/475) times faster). Use the
-largest `--batch-size` possible, or pass `--batch-size -1` for
-YOLOv5 [AutoBatch](https://github.com/ultralytics/yolov5/pull/5092). Batch sizes shown for V100-16GB.
-
-```bash
-python train.py --data coco.yaml --cfg yolov5n.yaml --weights '' --batch-size 128
-                                       yolov5s                                64
-                                       yolov5m                                40
-                                       yolov5l                                24
-                                       yolov5x                                16
-```
-
-<img width="800" src="https://user-images.githubusercontent.com/26833433/90222759-949d8800-ddc1-11ea-9fa1-1c97eed2b963.png">
-
-</details>
-
-<details open>
-<summary>Tutorials</summary>
-
-* [Train Custom Data](https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data)&nbsp; 🚀 RECOMMENDED
-* [Tips for Best Training Results](https://github.com/ultralytics/yolov5/wiki/Tips-for-Best-Training-Results)&nbsp; ☘️
-  RECOMMENDED
-* [Weights & Biases Logging](https://github.com/ultralytics/yolov5/issues/1289)&nbsp; 🌟 NEW
-* [Roboflow for Datasets, Labeling, and Active Learning](https://github.com/ultralytics/yolov5/issues/4975)&nbsp; 🌟 NEW
-* [Multi-GPU Training](https://github.com/ultralytics/yolov5/issues/475)
-* [PyTorch Hub](https://github.com/ultralytics/yolov5/issues/36)&nbsp; ⭐ NEW
-* [TFLite, ONNX, CoreML, TensorRT Export](https://github.com/ultralytics/yolov5/issues/251) 🚀
-* [Test-Time Augmentation (TTA)](https://github.com/ultralytics/yolov5/issues/303)
-* [Model Ensembling](https://github.com/ultralytics/yolov5/issues/318)
-* [Model Pruning/Sparsity](https://github.com/ultralytics/yolov5/issues/304)
-* [Hyperparameter Evolution](https://github.com/ultralytics/yolov5/issues/607)
-* [Transfer Learning with Frozen Layers](https://github.com/ultralytics/yolov5/issues/1314)&nbsp; ⭐ NEW
-* [TensorRT Deployment](https://github.com/wang-xinyu/tensorrtx)
-
-</details>
-
-## <div align="center">Environments</div>
-
-Get started in seconds with our verified environments. Click each icon below for details.
-
-<div align="center">
-    <a href="https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-colab-small.png" width="15%"/>
-    </a>
-    <a href="https://www.kaggle.com/ultralytics/yolov5">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-kaggle-small.png" width="15%"/>
-    </a>
-    <a href="https://hub.docker.com/r/ultralytics/yolov5">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-docker-small.png" width="15%"/>
-    </a>
-    <a href="https://github.com/ultralytics/yolov5/wiki/AWS-Quickstart">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-aws-small.png" width="15%"/>
-    </a>
-    <a href="https://github.com/ultralytics/yolov5/wiki/GCP-Quickstart">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-gcp-small.png" width="15%"/>
-    </a>
-</div>
-
-## <div align="center">Integrations</div>
-
-<div align="center">
-    <a href="https://wandb.ai/site?utm_campaign=repo_yolo_readme">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-wb-long.png" width="49%"/>
-    </a>
-    <a href="https://roboflow.com/?ref=ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-roboflow-long.png" width="49%"/>
-    </a>
-</div>
-
-|Weights and Biases|Roboflow ⭐ NEW|
-|:-:|:-:|
-|Automatically track and visualize all your YOLOv5 training runs in the cloud with [Weights & Biases](https://wandb.ai/site?utm_campaign=repo_yolo_readme)|Label and export your custom datasets directly to YOLOv5 for training with [Roboflow](https://roboflow.com/?ref=ultralytics) |
-
-
-<!-- ## <div align="center">Compete and Win</div>
-
-We are super excited about our first-ever Ultralytics YOLOv5 🚀 EXPORT Competition with **$10,000** in cash prizes!
+## Introduction
+SuperGlue is a CVPR 2020 research project done at Magic Leap. The SuperGlue network is a Graph Neural Network combined with an Optimal Matching layer that is trained to perform matching on two sets of sparse image features. This repo includes PyTorch code and pretrained weights for running the SuperGlue matching network on top of [SuperPoint](https://arxiv.org/abs/1712.07629) keypoints and descriptors. Given a pair of images, you can use this repo to extract matching features across the image pair.
 
 <p align="center">
-  <a href="https://github.com/ultralytics/yolov5/discussions/3213">
-  <img width="850" src="https://github.com/ultralytics/yolov5/releases/download/v1.0/banner-export-competition.png"></a>
-</p> -->
+  <img src="assets/teaser.png" width="500">
+</p>
 
-## <div align="center">Why YOLOv5</div>
+SuperGlue operates as a "middle-end," performing context aggregation, matching, and filtering in a single end-to-end architecture. For more details, please see:
 
-<p align="left"><img width="800" src="https://user-images.githubusercontent.com/26833433/136901921-abcfcd9d-f978-4942-9b97-0e3f202907df.png"></p>
+* Full paper PDF: [SuperGlue: Learning Feature Matching with Graph Neural Networks](https://arxiv.org/abs/1911.11763).
+
+* Authors: *Paul-Edouard Sarlin, Daniel DeTone, Tomasz Malisiewicz, Andrew Rabinovich*
+
+* Website: [psarlin.com/superglue](https://psarlin.com/superglue) for videos, slides, recent updates, and more visualizations.
+
+* `hloc`: a new toolbox for visual localization and SfM with SuperGlue, available at [cvg/Hierarchical-Localization](https://github.com/cvg/Hierarchical-Localization/). Winner of 3 CVPR 2020 competitions on localization and image matching!
+
+We provide two pre-trained weights files: an indoor model trained on ScanNet data, and an outdoor model trained on MegaDepth data. Both models are inside the [weights directory](./models/weights). By default, the demo will run the **indoor** model.
+
+## Dependencies
+* Python 3 >= 3.5
+* PyTorch >= 1.1
+* OpenCV >= 3.4 (4.1.2.30 recommended for best GUI keyboard interaction, see this [note](#additional-notes))
+* Matplotlib >= 3.1
+* NumPy >= 1.18
+
+Simply run the following command: `pip3 install numpy opencv-python torch matplotlib`
+
+## Contents
+There are two main top-level scripts in this repo:
+
+1. `demo_superglue.py` : runs a live demo on a webcam, IP camera, image directory or movie file
+2. `match_pairs.py`: reads image pairs from files and dumps matches to disk (also runs evaluation if ground truth relative poses are provided)
+
+## Live Matching Demo Script (`demo_superglue.py`)
+This demo runs SuperPoint + SuperGlue feature matching on an anchor image and live image. You can update the anchor image by pressing the `n` key. The demo can read image streams from a USB or IP camera, a directory containing images, or a video file. You can pass all of these inputs using the `--input` flag.
+
+### Run the demo on a live webcam
+
+Run the demo on the default USB webcam (ID #0), running on a CUDA GPU if one is found:
+
+```sh
+./demo_superglue.py
+```
+
+Keyboard control:
+
+* `n`: select the current frame as the anchor
+* `e`/`r`: increase/decrease the keypoint confidence threshold
+* `d`/`f`: increase/decrease the match filtering threshold
+* `k`: toggle the visualization of keypoints
+* `q`: quit
+
+Run the demo on 320x240 images running on the CPU:
+
+```sh
+./demo_superglue.py --resize 320 240 --force_cpu
+```
+
+The `--resize` flag can be used to resize the input image in three ways:
+
+1. `--resize` `width` `height` : will resize to exact `width` x `height` dimensions
+2. `--resize` `max_dimension` : will resize largest input image dimension to `max_dimension`
+3. `--resize` `-1` : will not resize (i.e. use original image dimensions)
+
+The default will resize images to `640x480`.
+
+### Run the demo on a directory of images
+
+The `--input` flag also accepts a path to a directory. We provide a directory of sample images from a sequence. To run the demo on the directory of images in `freiburg_sequence/` on a headless server (will not display to the screen) and write the output visualization images to `dump_demo_sequence/`:
+
+```sh
+./demo_superglue.py --input assets/freiburg_sequence/ --output_dir dump_demo_sequence --resize 320 240 --no_display
+```
+
+You should see this output on the sample Freiburg-TUM RGBD sequence:
+
+<img src="assets/freiburg_matches.gif" width="560">
+
+The matches are colored by their predicted confidence in a jet colormap (Red: more confident, Blue: less confident).
+
+### Additional useful command line parameters
+* Use `--image_glob` to change the image file extension (default: `*.png`, `*.jpg`, `*.jpeg`).
+* Use `--skip` to skip intermediate frames (default: `1`).
+* Use `--max_length` to cap the total number of frames processed (default: `1000000`).
+* Use `--show_keypoints` to visualize the detected keypoints (default: `False`).
+
+## Run Matching+Evaluation (`match_pairs.py`)
+
+This repo also contains a script `match_pairs.py` that runs the matching from a list of image pairs. With this script, you can:
+
+* Run the matcher on a set of image pairs (no ground truth needed)
+* Visualize the keypoints and matches, based on their confidence
+* Evaluate and visualize the match correctness, if the ground truth relative poses and intrinsics are provided
+* Save the keypoints, matches, and evaluation results for further processing
+* Collate evaluation results over many pairs and generate result tables
+
+### Matches only mode
+
+The simplest usage of this script will process the image pairs listed in a given text file and dump the keypoints and matches to compressed numpy `npz` files. We provide the challenging ScanNet pairs from the main paper in `assets/example_indoor_pairs/`. Running the following will run SuperPoint + SuperGlue on each image pair, and dump the results to `dump_match_pairs/`:
+
+```sh
+./match_pairs.py
+```
+
+The resulting `.npz` files can be read from Python as follows:
+
+```python
+>>> import numpy as np
+>>> path = 'dump_match_pairs/scene0711_00_frame-001680_scene0711_00_frame-001995_matches.npz'
+>>> npz = np.load(path)
+>>> npz.files
+['keypoints0', 'keypoints1', 'matches', 'match_confidence']
+>>> npz['keypoints0'].shape
+(382, 2)
+>>> npz['keypoints1'].shape
+(391, 2)
+>>> npz['matches'].shape
+(382,)
+>>> np.sum(npz['matches']>-1)
+115
+>>> npz['match_confidence'].shape
+(382,)
+```
+
+For each keypoint in `keypoints0`, the `matches` array indicates the index of the matching keypoint in `keypoints1`, or `-1` if the keypoint is unmatched.
+
+### Visualization mode
+
+You can add the flag `--viz` to dump image outputs which visualize the matches:
+
+```sh
+./match_pairs.py --viz
+```
+
+You should see images like this inside of `dump_match_pairs/` (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+<img src="assets/indoor_matches.png" width="560">
+
+The matches are colored by their predicted confidence in a jet colormap (Red: more confident, Blue: less confident).
+
+### Evaluation mode
+
+You can also estimate the pose using RANSAC + Essential Matrix decomposition and evaluate it if the ground truth relative poses and intrinsics are provided in the input `.txt` files. Each `.txt` file contains three key ground truth matrices: a 3x3 intrinsics matrix of image0: `K0`, a 3x3 intrinsics matrix of image1: `K1` , and a 4x4 matrix of the relative pose extrinsics `T_0to1`.
+
+To run the evaluation on the sample set of images (by default reading `assets/scannet_sample_pairs_with_gt.txt`), you can run:
+
+```sh
+./match_pairs.py --eval
+```
+
+
+Since you enabled `--eval`, you should see collated results printed to the terminal. For the example images provided, you should get the following numbers (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+```txt
+Evaluation Results (mean over 15 pairs):
+AUC@5    AUC@10  AUC@20  Prec    MScore
+26.99    48.40   64.47   73.52   19.60
+```
+
+The resulting `.npz` files in `dump_match_pairs/` will now contain scalar values related to the evaluation, computed on the sample images provided. Here is what you should find in one of the generated evaluation files:
+
+```python
+>>> import numpy as np
+>>> path = 'dump_match_pairs/scene0711_00_frame-001680_scene0711_00_frame-001995_evaluation.npz'
+>>> npz = np.load(path)
+>>> print(npz.files)
+['error_t', 'error_R', 'precision', 'matching_score', 'num_correct', 'epipolar_errors']
+```
+
+You can also visualize the evaluation metrics by running the following command:
+
+```sh
+./match_pairs.py --eval --viz
+```
+
+You should also now see additional images in `dump_match_pairs/` which visualize the evaluation numbers (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+<img src="assets/indoor_evaluation.png" width="560">
+
+The top left corner of the image shows the pose error and number of inliers, while the lines are colored by their epipolar error computed with the ground truth relative pose (red: higher error, green: lower error).
+
+### Running on sample outdoor pairs
+
 <details>
-  <summary>YOLOv5-P5 640 Figure (click to expand)</summary>
+  <summary>[Click to expand]</summary>
 
-<p align="left"><img width="800" src="https://user-images.githubusercontent.com/26833433/136763877-b174052b-c12f-48d2-8bc4-545e3853398e.png"></p>
+In this repo, we also provide a few challenging Phototourism pairs, so that you can re-create some of the figures from the paper. Run this script to run matching and visualization (no ground truth is provided, see this [note](#reproducing-outdoor-evaluation-final-table)) on the provided pairs:
+
+```sh
+./match_pairs.py --resize 1600 --superglue outdoor --max_keypoints 2048 --nms_radius 3  --resize_float --input_dir assets/phototourism_sample_images/ --input_pairs assets/phototourism_sample_pairs.txt --output_dir dump_match_pairs_outdoor --viz
+```
+
+You should now image pairs such as these in `dump_match_pairs_outdoor/` (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+<img src="assets/outdoor_matches.png" width="560">
+
 </details>
-<details>
-  <summary>Figure Notes (click to expand)</summary>
 
-* **COCO AP val** denotes mAP@0.5:0.95 metric measured on the 5000-image [COCO val2017](http://cocodataset.org) dataset over various inference sizes from 256 to 1536.
-* **GPU Speed** measures average inference time per image on [COCO val2017](http://cocodataset.org) dataset using a [AWS p3.2xlarge](https://aws.amazon.com/ec2/instance-types/p3/) V100 instance at batch-size 32.
-* **EfficientDet** data from [google/automl](https://github.com/google/automl) at batch size 8.
-* **Reproduce** by `python val.py --task study --data coco.yaml --iou 0.7 --weights yolov5n6.pt yolov5s6.pt yolov5m6.pt yolov5l6.pt yolov5x6.pt`
-</details>
-
-### Pretrained Checkpoints
-
-[assets]: https://github.com/ultralytics/yolov5/releases
-
-[TTA]: https://github.com/ultralytics/yolov5/issues/303
-
-|Model |size<br><sup>(pixels) |mAP<sup>val<br>0.5:0.95 |mAP<sup>val<br>0.5 |Speed<br><sup>CPU b1<br>(ms) |Speed<br><sup>V100 b1<br>(ms) |Speed<br><sup>V100 b32<br>(ms) |params<br><sup>(M) |FLOPs<br><sup>@640 (B)
-|---                    |---  |---    |---    |---    |---    |---    |---    |---
-|[YOLOv5n][assets]      |640  |28.4   |46.0   |**45** |**6.3**|**0.6**|**1.9**|**4.5**
-|[YOLOv5s][assets]      |640  |37.2   |56.0   |98     |6.4    |0.9    |7.2    |16.5
-|[YOLOv5m][assets]      |640  |45.2   |63.9   |224    |8.2    |1.7    |21.2   |49.0
-|[YOLOv5l][assets]      |640  |48.8   |67.2   |430    |10.1   |2.7    |46.5   |109.1
-|[YOLOv5x][assets]      |640  |50.7   |68.9   |766    |12.1   |4.8    |86.7   |205.7
-|                       |     |       |       |       |       |       |       |
-|[YOLOv5n6][assets]     |1280 |34.0   |50.7   |153    |8.1    |2.1    |3.2    |4.6
-|[YOLOv5s6][assets]     |1280 |44.5   |63.0   |385    |8.2    |3.6    |12.6   |16.8
-|[YOLOv5m6][assets]     |1280 |51.0   |69.0   |887    |11.1   |6.8    |35.7   |50.0
-|[YOLOv5l6][assets]     |1280 |53.6   |71.6   |1784   |15.8   |10.5   |76.7   |111.4
-|[YOLOv5x6][assets]<br>+ [TTA][TTA]|1280<br>1536 |54.7<br>**55.4** |**72.4**<br>72.3 |3136<br>- |26.2<br>- |19.4<br>- |140.7<br>- |209.8<br>-
+### Recommended settings for indoor / outdoor
 
 <details>
-  <summary>Table Notes (click to expand)</summary>
+  <summary>[Click to expand]</summary>
 
-* All checkpoints are trained to 300 epochs with default settings and hyperparameters.
-* **mAP<sup>val</sup>** values are for single-model single-scale on [COCO val2017](http://cocodataset.org) dataset.<br>Reproduce by `python val.py --data coco.yaml --img 640 --conf 0.001 --iou 0.65`
-* **Speed** averaged over COCO val images using a [AWS p3.2xlarge](https://aws.amazon.com/ec2/instance-types/p3/) instance. NMS times (~1 ms/img) not included.<br>Reproduce by `python val.py --data coco.yaml --img 640 --task speed --batch 1`
-* **TTA** [Test Time Augmentation](https://github.com/ultralytics/yolov5/issues/303) includes reflection and scale augmentations.<br>Reproduce by `python val.py --data coco.yaml --img 1536 --iou 0.7 --augment`
+For **indoor** images, we recommend the following settings (these are the defaults):
+
+```sh
+./match_pairs.py --resize 640 --superglue indoor --max_keypoints 1024 --nms_radius 4
+```
+
+For **outdoor** images, we recommend the following settings:
+
+```sh
+./match_pairs.py --resize 1600 --superglue outdoor --max_keypoints 2048 --nms_radius 3 --resize_float
+```
+
+You can provide your own list of pairs `--input_pairs` for images contained in `--input_dir`. Images can be resized before network inference with `--resize`. If you are re-running the same evaluation many times, you can use the `--cache` flag to reuse old computation.
+</details>
+
+### Test set pair file format explained
+
+<details>
+  <summary>[Click to expand]</summary>
+
+We provide the list of ScanNet test pairs in `assets/scannet_test_pairs_with_gt.txt` (with ground truth) and Phototourism test pairs `assets/phototourism_test_pairs.txt` (without ground truth) used to evaluate the matching from the paper. Each line corresponds to one pair and is structured as follows:
+
+```
+path_image_A path_image_B exif_rotationA exif_rotationB [KA_0 ... KA_8] [KB_0 ... KB_8] [T_AB_0 ... T_AB_15]
+```
+
+The `path_image_A` and `path_image_B` entries are paths to image A and B, respectively. The `exif_rotation` is an integer in the range [0, 3] that comes from the original EXIF metadata associated with the image, where, 0: no rotation, 1: 90 degree clockwise, 2: 180 degree clockwise, 3: 270 degree clockwise. If the EXIF data is not known, you can just provide a zero here and no rotation will be performed. `KA` and `KB` are the flattened `3x3` matrices of image A and image B intrinsics. `T_AB` is a flattened `4x4` matrix of the extrinsics between the pair.
+</details>
+
+### Reproducing the indoor evaluation on ScanNet
+
+<details>
+  <summary>[Click to expand]</summary>
+
+We provide the groundtruth for ScanNet in our format in the file `assets/scannet_test_pairs_with_gt.txt` for convenience. In order to reproduce similar tables to what was in the paper, you will need to download the dataset (we do not provide the raw test images). To download the ScanNet dataset, do the following:
+
+1. Head to the [ScanNet](https://github.com/ScanNet/ScanNet) github repo to download the ScanNet test set (100 scenes).
+2. You will need to extract the raw sensor data from the 100 `.sens` files in each scene in the test set using the [SensReader](https://github.com/ScanNet/ScanNet/tree/master/SensReader) tool.
+
+Once the ScanNet dataset is downloaded in `~/data/scannet`, you can run the following:
+
+```sh
+./match_pairs.py --input_dir ~/data/scannet --input_pairs assets/scannet_test_pairs_with_gt.txt --output_dir dump_scannet_test_results --eval
+```
+
+You should get the following table for ScanNet (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+```txt
+Evaluation Results (mean over 1500 pairs):
+AUC@5    AUC@10  AUC@20  Prec    MScore
+16.12    33.76   51.79   84.37   31.14
+```
 
 </details>
 
-## <div align="center">Contribute</div>
+### Reproducing the outdoor evaluation on YFCC
 
-We love your input! We want to make contributing to YOLOv5 as easy and transparent as possible. Please see our [Contributing Guide](CONTRIBUTING.md) to get started, and fill out the [YOLOv5 Survey](https://ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to send us feedback on your experiences. Thank you to all our contributors!
+<details>
+  <summary>[Click to expand]</summary>
 
-<a href="https://github.com/ultralytics/yolov5/graphs/contributors"><img src="https://opencollective.com/ultralytics/contributors.svg?width=990" /></a>
+We provide the groundtruth for YFCC in our format in the file `assets/yfcc_test_pairs_with_gt.txt` for convenience. In order to reproduce similar tables to what was in the paper, you will need to download the dataset (we do not provide the raw test images). To download the YFCC dataset, you can use the [OANet](https://github.com/zjhthu/OANet) repo:
 
-## <div align="center">Contact</div>
+```sh
+git clone https://github.com/zjhthu/OANet
+cd OANet
+bash download_data.sh raw_data raw_data_yfcc.tar.gz 0 8
+tar -xvf raw_data_yfcc.tar.gz
+mv raw_data/yfcc100m ~/data
+```
 
-For YOLOv5 bugs and feature requests please visit [GitHub Issues](https://github.com/ultralytics/yolov5/issues). For business inquiries or
-professional support requests please visit [https://ultralytics.com/contact](https://ultralytics.com/contact).
+Once the YFCC dataset is downloaded in `~/data/yfcc100m`, you can run the following:
 
-<br>
+```sh
+./match_pairs.py --input_dir ~/data/yfcc100m --input_pairs assets/yfcc_test_pairs_with_gt.txt --output_dir dump_yfcc_test_results --eval --resize 1600 --superglue outdoor --max_keypoints 2048 --nms_radius 3 --resize_float
+```
 
-<div align="center">
-    <a href="https://github.com/ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-github.png" width="3%"/>
-    </a>
-    <img width="3%" />
-    <a href="https://www.linkedin.com/company/ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-linkedin.png" width="3%"/>
-    </a>
-    <img width="3%" />
-    <a href="https://twitter.com/ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-twitter.png" width="3%"/>
-    </a>
-    <img width="3%" />
-    <a href="https://youtube.com/ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-youtube.png" width="3%"/>
-    </a>
-    <img width="3%" />
-    <a href="https://www.facebook.com/ultralytics">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-facebook.png" width="3%"/>
-    </a>
-    <img width="3%" />
-    <a href="https://www.instagram.com/ultralytics/">
-        <img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/logo-social-instagram.png" width="3%"/>
-    </a>
-</div>
+You should get the following table for YFCC (or something very close to it, see this [note](#a-note-on-reproducibility)):
+
+```txt
+Evaluation Results (mean over 4000 pairs):
+AUC@5    AUC@10  AUC@20  Prec    MScore
+39.02    59.51   75.72   98.72   23.61  
+```
+
+</details>
+
+### Reproducing outdoor evaluation on Phototourism
+
+<details>
+  <summary>[Click to expand]</summary>
+
+The Phototourism results shown in the paper were produced using similar data as the test set from the [Image Matching Challenge 2020](https://vision.uvic.ca/image-matching-challenge/), which holds the ground truth data private for the test set. We list the pairs we used in `assets/phototourism_test_pairs.txt`. To reproduce similar numbers on this test set, please submit to the challenge benchmark. While the challenge is still live, we cannot share the test set publically since we want to help maintain the integrity of the challenge. 
+
+</details>
+
+### Correcting EXIF rotation data in YFCC and Phototourism
+
+<details>
+  <summary>[Click to expand]</summary>
+
+In this repo, we provide manually corrected the EXIF rotation data for the outdoor evaluations on YFCC and Phototourism. For the YFCC dataset we found 7 images with incorrect EXIF rotation flags, resulting in 148 pairs out of 4000 being corrected. For Phototourism, we found 36 images with incorrect EXIF rotation flags, resulting in 212 out of 2200 pairs being corrected.
+
+The SuperGlue paper reports the results of SuperGlue **without** the corrected rotations, while the numbers in this README are reported **with** the corrected rotations. We found that our final conclusions from the evaluation still hold with or without the corrected rotations. For backwards compatability, we included the original, uncorrected EXIF rotation data in `assets/phototourism_test_pairs_original.txt` and `assets/yfcc_test_pairs_with_gt_original.txt` respectively.
+
+</details>
+
+### Outdoor training / validation scene splits of MegaDepth
+
+<details>
+  <summary>[Click to expand]</summary>
+
+For training and validation of the outdoor model, we used scenes from the [MegaDepth dataset](http://www.cs.cornell.edu/projects/megadepth/). We provide the list of scenes used to train the outdoor model in the `assets/` directory:
+
+* Training set: `assets/megadepth_train_scenes.txt`
+* Validation set: `assets/megadepth_validation_scenes.txt`
+
+</details>
+
+### A note on reproducibility
+
+<details>
+  <summary>[Click to expand]</summary>
+
+After simplifying the model code and evaluation code and preparing it for release, we made some improvements and tweaks that result in slightly different numbers than what was reported in the paper. The numbers and figures reported in the README were done using Ubuntu 16.04, OpenCV 3.4.5, and PyTorch 1.1.0. Even with matching the library versions, we observed some slight differences across Mac and Ubuntu, which we believe are due to differences in OpenCV's image resize function implementation and randomization of RANSAC.
+</details>
+
+### Creating high-quality PDF visualizations and faster visualization with --fast_viz
+
+<details>
+  <summary>[Click to expand]</summary>
+
+When generating output images with `match_pairs.py`, the default `--viz` flag uses a Matplotlib renderer which allows for the generation of camera-ready PDF visualizations if you additionally use `--viz_extension pdf` instead of the default png extension.
+
+```
+./match_pairs.py --viz --viz_extension pdf
+```
+
+Alternatively, you might want to save visualization images but have the generation be much faster.  You can use the `--fast_viz` flag to use an OpenCV-based image renderer as follows:
+
+```
+./match_pairs.py --viz --fast_viz
+```
+
+If you would also like an OpenCV display window to preview the results (you must use non-pdf output and use fast_fiz), simply run:
+
+```
+./match_pairs.py --viz --fast_viz --opencv_display
+```
+
+</details>
+
+
+## BibTeX Citation
+If you use any ideas from the paper or code from this repo, please consider citing:
+
+```txt
+@inproceedings{sarlin20superglue,
+  author    = {Paul-Edouard Sarlin and
+               Daniel DeTone and
+               Tomasz Malisiewicz and
+               Andrew Rabinovich},
+  title     = {{SuperGlue}: Learning Feature Matching with Graph Neural Networks},
+  booktitle = {CVPR},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/1911.11763}
+}
+```
+
+## Additional Notes
+* For the demo, we found that the keyboard interaction works well with OpenCV 4.1.2.30, older versions were less responsive and the newest version had a [OpenCV bug on Mac](https://stackoverflow.com/questions/60032540/opencv-cv2-imshow-is-not-working-because-of-the-qt)
+* We generally do not recommend to run SuperPoint+SuperGlue below 160x120 resolution (QQVGA) and above 2000x1500
+* We do not intend to release the SuperGlue training code.
+* We do not intend to release the SIFT-based or homography SuperGlue models.
+
+## Legal Disclaimer
+Magic Leap is proud to provide its latest samples, toolkits, and research projects on Github to foster development and gather feedback from the spatial computing community. Use of the resources within this repo is subject to (a) the license(s) included herein, or (b) if no license is included, Magic Leap's [Developer Agreement](https://id.magicleap.com/terms/developer), which is available on our [Developer Portal](https://developer.magicleap.com/).
+If you need more, just ask on the [forums](https://forum.magicleap.com/hc/en-us/community/topics)!
+We're thrilled to be part of a well-meaning, friendly and welcoming community of millions.
